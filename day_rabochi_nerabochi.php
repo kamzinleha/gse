@@ -1,12 +1,12 @@
 <?php
 
-class day_rabochi_nerabochi {
+class Day_Rabochi_Nerabochi {
   // Свойства
   public $date_day; //Рабочие/Нерабочие дни
   public $kol_day; //количество выходных
 
   // Методы
-  function day_rabochi($d) {
+  function dayRabochi($d): bool  {
 	//  Метод, который принимает `дату` и возвращает `bool` - является ли дата _рабочим_ днем или нет.
 
 	$day_week=date("N", strtotime($d)); // Вычесляем день недели
@@ -18,7 +18,7 @@ class day_rabochi_nerabochi {
 
   }
   
-  function day_next($d, $kol) {
+  function dayNext($d, $kol):string {
 	// Метод, который принимает `дату` и `число` (смещение). Возвращает `дату`, которая смещена относительно входной на указанное количество _рабочих_ дней.  
 	$this->kol_day=0; //по умолчанию выходных нет
 	$d_new=$d; //переменная с которой будем работать
@@ -28,9 +28,9 @@ class day_rabochi_nerabochi {
 		$d_new=date("d.m.Y", strtotime($d_new.'+ '.'1'.' days'));
 
 		//Проверяем если день не рабочий, то смещаемся дополнительно.
-		if (!$this->day_rabochi($d_new))
+		if (!$this->dayRabochi($d_new))
 			{	//смещаемся пока день не будет рабочим
-				while ( !$this->day_rabochi($d_new)){
+				while ( !$this->dayRabochi($d_new)){
 					$d_new=date("d.m.Y", strtotime($d_new.'+ 1 days'));	
 					$this->kol_day++;
 				}

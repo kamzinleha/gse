@@ -1,4 +1,10 @@
 <?php 
+
+//Подключаем модули
+require_once __DIR__ . '/date_day.php';
+require_once __DIR__ . '/day_rabochi_nerabochi.php';
+
+
 $d_tek = '03.03.2022'; //выставим дату по умолчанию 
 $smeh_kol=0; //количество дней смещения по умолчанию
 
@@ -27,21 +33,18 @@ if (isset($_POST['dat'])) {
 	$day=date("d.m.Y",strtotime($_POST['dat']));
 	$kol=$_POST['kol'];
 
-	//Подключаем модули
-	include_once 'date_day.php';
-	include_once 'day_rabochi_nerabochi.php';
 
 	//переменная для работы
-	$dr = new day_rabochi_nerabochi();
+	$dr = new Day_Rabochi_Nerabochi();
 	$dr->date_day=$date_day;
 
 	//выводим информацию на просмотр 
 	echo 'Задан день '.$day. '.<br>';
 	echo 'Смешение дней: '.$kol.'.<br>';
 	echo '<br>';
-	echo $dr->day_rabochi($day)? 'true - Рабочий день.' : 'false - День не является рабочим.';
+	echo $dr->dayRabochi($day)? 'true - Рабочий день.' : 'false - День не является рабочим.';
 	echo '<br>';
-	echo 'Смещение на '.$dr->day_next($day,$kol).'.<br>';
+	echo 'Смещение на '.$dr->dayNext($day,$kol).'.<br>';
 	echo 'Выходных дней '.$dr->kol_day.'.<br>';
 
 	//var_dump($date_day);
