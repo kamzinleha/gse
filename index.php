@@ -3,7 +3,7 @@
 //Подключаем модули
 require_once __DIR__ . '/date_day.php';
 require_once __DIR__ . '/day_rabochi_nerabochi.php';
-
+use Rabochi\Nerabochi\Day;
 
 $d_tek = '03.03.2022'; //выставим дату по умолчанию 
 $smeh_kol=0; //количество дней смещения по умолчанию
@@ -35,7 +35,7 @@ if (isset($_POST['dat'])) {
 
 
 	//переменная для работы
-	$dr = new Day_Rabochi_Nerabochi();
+	$dr = new Day();
 	$dr->date_day=$date_day;
 
 	//выводим информацию на просмотр 

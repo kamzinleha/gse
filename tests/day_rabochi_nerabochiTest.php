@@ -2,13 +2,13 @@
 
 require_once __DIR__ . '/../date_day.php';
 require_once __DIR__ . '/../day_rabochi_nerabochi.php';
-
+use Rabochi\Nerabochi\Day;
 
 class day_rabochi_nerabochiTest extends \PHPUnit\Framework\TestCase {
 	
 	public function test_day_Rabochi() {
 		global $date_day;
-		$dr = new Day_Rabochi_Nerabochi();
+		$dr = new Day();
 		$dr->date_day=$date_day;
 		$this->assertSame( true,  $dr->dayRabochi('03.03.2022') );
 		$this->assertSame( true,  $dr->dayRabochi('04.03.2022') );
@@ -21,7 +21,7 @@ class day_rabochi_nerabochiTest extends \PHPUnit\Framework\TestCase {
 	
 	public function test_day_Next() {
 		global $date_day;
-		$dr = new Day_Rabochi_Nerabochi();
+		$dr = new Day();
 		$dr->date_day=$date_day;
 		$this->assertSame( '04.03.2022', $dr->dayNext('03.03.2022',1) );
 		$this->assertSame( '05.03.2022', $dr->dayNext('03.03.2022',2) );

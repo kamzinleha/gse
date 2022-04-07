@@ -1,6 +1,7 @@
 <?php
+namespace Rabochi\Nerabochi;
 
-class Day_Rabochi_Nerabochi {
+class Day {
   // Свойства
   public $date_day; //Рабочие/Нерабочие дни
   public $kol_day; //количество выходных
